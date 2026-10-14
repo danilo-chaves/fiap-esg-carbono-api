@@ -166,7 +166,11 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
    - Pipeline de entrega contínua executando deploy para o ambiente de Produção.
    - Evidência: `docs/evidencias/04-deploy-production.png`
 
-5. **API em Funcionamento:**
+5. **Visão Geral Deploy Automatizado Staging e Produção:**
+   - Pipeline de entrega contínua Staging e Produção.
+   - Evidência: `docs/evidencias/05-deploy-production.png`
+
+6. **API em Funcionamento:**
    - Requisição de autenticação e retorno do token JWT.
    - Evidência: `docs/evidencias/05-api-postman-jwt.png`
 
