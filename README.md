@@ -157,18 +157,22 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 2. **Execução dos Testes Automatizados no Pipeline (CI):**
    - Etapa do GitHub Actions executando com sucesso: `mvn test` (9 testes concluídos com sucesso).
    - Evidência: `docs/evidencias/02-github-actions-ci-tests.png`
+   [CI](docs/evidencias/02-github-actions-ci-tests.png)
 
 3. **Deploy Automatizado em Staging:**
    - Pipeline de entrega contínua executando deploy para o ambiente de Staging.
    - Evidência: `docs/evidencias/03-deploy-staging.png`
+   [CD Staging](docs/evidencias/03-deploy-staging.png)
 
 4. **Deploy Automatizado em Produção:**
    - Pipeline de entrega contínua executando deploy para o ambiente de Produção.
    - Evidência: `docs/evidencias/04-deploy-production.png`
+   [CD - Production](docs/evidencias/04-deploy-production.png)
 
 5. **Visão Geral Deploy Automatizado Staging e Produção:**
    - Pipeline de entrega contínua Staging e Produção.
    - Evidência: `docs/evidencias/05-deploy-production.png`
+   [CD Staging e Protuction](docs/evidencias/05-deploy-production.png)
 
 6. **API em Funcionamento:**
    - Requisição de autenticação e retorno do token JWT.
