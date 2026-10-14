@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+
+  oracle-db:
+    image: gvenzl/oracle-free:23-slim
+    container_name: esg_oracle_db
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD:-190492}
+      APP_USER: ${APP_USER:-rm562365}
+      APP_USER_PASSWORD: ${APP_USER_PASSWORD:-190492}
+    ports:
+      - "${ORACLE_PORT:-1521}:1521"
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+    networks:
+      - esg_network
+
+  carbono-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: esg_carbono_api
+    ports:
+      - "${APP_PORT:-8080}:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@oracle-db:1521/FREEPDB1
+      SPRING_DATASOURCE_USERNAME: ${APP_USER:-rm562365}
+      SPRING_DATASOURCE_PASSWORD: ${APP_USER_PASSWORD:-190492}
+      JWT_SECRET: ${JWT_SECRET:-3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b}
+    depends_on:
+      oracle-db:
+        condition: service_healthy
+    networks:
+      - esg_network
+
+volumes:
+  oracle_data:
+
+networks:
+  esg_network:
+    driver: bridge

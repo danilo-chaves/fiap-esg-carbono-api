@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: carbono-api-test
+
+  datasource:
+    url: jdbc:h2:mem:esgdb;DB_CLOSE_DELAY=-1;MODE=Oracle;DEFAULT_NULL_ORDERING=HIGH
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  flyway:
+    enabled: false
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+jwt:
+  secret: 3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b
+  expiration: 86400000
